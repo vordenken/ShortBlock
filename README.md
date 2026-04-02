@@ -1,2 +1,83 @@
-# ShortBlock
-Automatically hides Youtube Shorts (macOS 13+ Safari Extention)
+<p align="center">
+  <a href="#">
+    <img height="128" width="128" src="https://raw.github.com/vordenken/ShortBlock/main/ShortBlock/Assets.xcassets/AppIcon.appiconset/icon_512x512.png">
+  </a>
+  <h1 align="center">ShortBlock for Safari</h1>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/downloads/vordenken/ShortBlock/total" alt="Downloads">
+  <img src="https://img.shields.io/github/license/vordenken/ShortBlock" alt="License">
+  <img src="https://img.shields.io/github/actions/workflow/status/vordenken/ShortBlock/build.yml" alt="Build">
+  <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+</p>
+
+A Safari extension that blocks YouTube Shorts — in the sidebar, the home feed, search results, recommendations, and on `/shorts/` pages.
+
+## ✨ Features
+
+- Hides the Shorts entry in the YouTube sidebar navigation
+- Removes Shorts shelves from the home feed
+- Hides individual Short items in feeds, search results, and recommendations
+- Redirects `/shorts/` pages back to the YouTube homepage
+- Works on all YouTube domains (`youtube.com`, `m.youtube.com`, `music.youtube.com`)
+- Simple one-click on/off toggle in the popup
+- Handles YouTube's SPA navigation (single-page app)
+
+## 🚀 Quick Start
+
+1. Download the latest release [here](https://github.com/vordenken/ShortBlock/releases)
+2. Unzip and move `ShortBlock.app` to your Applications folder
+3. Open the app — it will guide you to enable the Safari extension
+4. Enable **ShortBlock** in Safari → Settings → Extensions
+
+> **Note:** Releases from GitHub Actions are unsigned. macOS will ask for confirmation the first time you open the app. Right-click → Open to bypass Gatekeeper.
+
+## 💻 Requirements
+
+- macOS 13.5 or later
+- Safari 16 or later
+
+## 🔨 Build from Source
+
+```bash
+git clone https://github.com/vordenken/ShortBlock.git
+cd ShortBlock
+open ShortBlock.xcodeproj
+```
+
+Then build and run the `ShortBlock` scheme in Xcode.
+
+Alternatively, pushes to tags matching `v*` automatically trigger a GitHub Actions build and create a release.
+
+## 🤝 Contributing
+
+- Code reviews and suggestions welcome
+- Bug reports via [Issues](https://github.com/vordenken/ShortBlock/issues)
+- Feature improvements via Pull Requests
+
+## ❤️ Support
+
+If you find ShortBlock helpful, consider supporting its development:
+
+<p align="center">
+  <a href="https://www.buymeacoffee.com/vordenken">
+    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
+  </a>
+  <a href="https://ko-fi.com/vordenken">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Ko-fi">
+  </a>
+</p>
+
+## 📝 License & Privacy
+
+- Licensed under GNU GPLv3 — see [LICENSE](LICENSE) file
+- No personal data collection — see [Privacy Policy](PRIVACY.md)
+
+## 🙏 Acknowledgments
+
+- Inspired by [AutoPiP](https://github.com/vordenken/AutoPiP)
+- Built with Safari Web Extension technology
+
+---
+Created by vordenken

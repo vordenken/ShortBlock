@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B96CF0842CEB761900C7166A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B96CF0832CEB761300C7166A /* .gitignore */; };
+		B9D72C4C2CEB7B3800C3853D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D72C4B2CEB7B3400C3853D /* README.md */; };
+		B9D72C4E2CEB7D1A00C3853D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B9D72C4D2CEB7D1A00C3853D /* LICENSE */; };
+		B9E4C0902CEB6D0D00364B69 /* ShortBlock Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B9E4C08F2CEB6D0D00364B69 /* ShortBlock Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9E4C07A2CEB6D0D00364B69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9E4C0552CEB6D0B00364B69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9E4C05C2CEB6D0B00364B69;
+			remoteInfo = ShortBlock;
+		};
+		B9E4C0842CEB6D0D00364B69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9E4C0552CEB6D0B00364B69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9E4C05C2CEB6D0B00364B69;
+			remoteInfo = ShortBlock;
+		};
+		B9E4C0912CEB6D0D00364B69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9E4C0552CEB6D0B00364B69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9E4C08E2CEB6D0D00364B69;
+			remoteInfo = "ShortBlock Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9E4C0AF2CEB6D0D00364B69 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9E4C0902CEB6D0D00364B69 /* ShortBlock Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B96CF0832CEB761300C7166A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B9D72C4B2CEB7B3400C3853D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B9D72C4D2CEB7D1A00C3853D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B9E4C05D2CEB6D0B00364B69 /* ShortBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9E4C0792CEB6D0D00364B69 /* ShortBlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShortBlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9E4C0832CEB6D0D00364B69 /* ShortBlockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShortBlockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9E4C08F2CEB6D0D00364B69 /* ShortBlock Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ShortBlock Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B9E4C0A92CEB6D0D00364B69 /* Exceptions for "ShortBlock Extension" folder in "ShortBlock Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B9E4C08E2CEB6D0D00364B69 /* ShortBlock Extension */;
+		};
+		B9E7220A2CF5FB9400951548 /* Exceptions for "ShortBlock" folder in "ShortBlock" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B9E4C05C2CEB6D0B00364B69 /* ShortBlock */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B9E4C05F2CEB6D0B00364B69 /* ShortBlock */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B9E7220A2CF5FB9400951548 /* Exceptions for "ShortBlock" folder in "ShortBlock" target */,
+			);
+			path = ShortBlock;
+			sourceTree = "<group>";
+		};
+		B9E4C07C2CEB6D0D00364B69 /* ShortBlockTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ShortBlockTests;
+			sourceTree = "<group>";
+		};
+		B9E4C0862CEB6D0D00364B69 /* ShortBlockUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ShortBlockUITests;
+			sourceTree = "<group>";
+		};
+		B9E4C0932CEB6D0D00364B69 /* ShortBlock Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B9E4C0A92CEB6D0D00364B69 /* Exceptions for "ShortBlock Extension" folder in "ShortBlock Extension" target */,
+			);
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "ShortBlock Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B9E4C05A2CEB6D0B00364B69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C0762CEB6D0D00364B69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C0802CEB6D0D00364B69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C08C2CEB6D0D00364B69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B9E4C0542CEB6D0B00364B69 = {
+			isa = PBXGroup;
+			children = (
+						B9D72C4D2CEB7D1A00C3853D /* LICENSE */,
+				B9D72C4B2CEB7B3400C3853D /* README.md */,
+				B96CF0832CEB761300C7166A /* .gitignore */,
+				B9E4C05F2CEB6D0B00364B69 /* ShortBlock */,
+				B9E4C07C2CEB6D0D00364B69 /* ShortBlockTests */,
+				B9E4C0862CEB6D0D00364B69 /* ShortBlockUITests */,
+				B9E4C0932CEB6D0D00364B69 /* ShortBlock Extension */,
+				B9E4C05E2CEB6D0B00364B69 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B9E4C05E2CEB6D0B00364B69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9E4C05D2CEB6D0B00364B69 /* ShortBlock.app */,
+				B9E4C0792CEB6D0D00364B69 /* ShortBlockTests.xctest */,
+				B9E4C0832CEB6D0D00364B69 /* ShortBlockUITests.xctest */,
+				B9E4C08F2CEB6D0D00364B69 /* ShortBlock Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B9E4C05C2CEB6D0B00364B69 /* ShortBlock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9E4C0B02CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlock" */;
+			buildPhases = (
+				B9E4C0592CEB6D0B00364B69 /* Sources */,
+				B9E4C05A2CEB6D0B00364B69 /* Frameworks */,
+				B9E4C05B2CEB6D0B00364B69 /* Resources */,
+				B9E4C0AF2CEB6D0D00364B69 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9E4C0922CEB6D0D00364B69 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B9E4C05F2CEB6D0B00364B69 /* ShortBlock */,
+			);
+			name = ShortBlock;
+			packageProductDependencies = (
+			);
+			productName = ShortBlock;
+			productReference = B9E4C05D2CEB6D0B00364B69 /* ShortBlock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B9E4C0782CEB6D0D00364B69 /* ShortBlockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9E4C0B32CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlockTests" */;
+			buildPhases = (
+				B9E4C0752CEB6D0D00364B69 /* Sources */,
+				B9E4C0762CEB6D0D00364B69 /* Frameworks */,
+				B9E4C0772CEB6D0D00364B69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9E4C07B2CEB6D0D00364B69 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B9E4C07C2CEB6D0D00364B69 /* ShortBlockTests */,
+			);
+			name = ShortBlockTests;
+			packageProductDependencies = (
+			);
+			productName = ShortBlockTests;
+			productReference = B9E4C0792CEB6D0D00364B69 /* ShortBlockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B9E4C0822CEB6D0D00364B69 /* ShortBlockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9E4C0B62CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlockUITests" */;
+			buildPhases = (
+				B9E4C07F2CEB6D0D00364B69 /* Sources */,
+				B9E4C0802CEB6D0D00364B69 /* Frameworks */,
+				B9E4C0812CEB6D0D00364B69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9E4C0852CEB6D0D00364B69 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B9E4C0862CEB6D0D00364B69 /* ShortBlockUITests */,
+			);
+			name = ShortBlockUITests;
+			packageProductDependencies = (
+			);
+			productName = ShortBlockUITests;
+			productReference = B9E4C0832CEB6D0D00364B69 /* ShortBlockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B9E4C08E2CEB6D0D00364B69 /* ShortBlock Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9E4C0AA2CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlock Extension" */;
+			buildPhases = (
+				B9E4C08B2CEB6D0D00364B69 /* Sources */,
+				B9E4C08C2CEB6D0D00364B69 /* Frameworks */,
+				B9E4C08D2CEB6D0D00364B69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B9E4C0932CEB6D0D00364B69 /* ShortBlock Extension */,
+			);
+			name = "ShortBlock Extension";
+			packageProductDependencies = (
+			);
+			productName = "ShortBlock Extension";
+			productReference = B9E4C08F2CEB6D0D00364B69 /* ShortBlock Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9E4C0552CEB6D0B00364B69 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					B9E4C05C2CEB6D0B00364B69 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					B9E4C0782CEB6D0D00364B69 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B9E4C05C2CEB6D0B00364B69;
+					};
+					B9E4C0822CEB6D0D00364B69 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B9E4C05C2CEB6D0B00364B69;
+					};
+					B9E4C08E2CEB6D0D00364B69 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = B9E4C0582CEB6D0B00364B69 /* Build configuration list for PBXProject "ShortBlock" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B9E4C0542CEB6D0B00364B69;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B9E4C05E2CEB6D0B00364B69 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B9E4C05C2CEB6D0B00364B69 /* ShortBlock */,
+				B9E4C0782CEB6D0D00364B69 /* ShortBlockTests */,
+				B9E4C0822CEB6D0D00364B69 /* ShortBlockUITests */,
+				B9E4C08E2CEB6D0D00364B69 /* ShortBlock Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B9E4C05B2CEB6D0B00364B69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9D72C4E2CEB7D1A00C3853D /* LICENSE in Resources */,
+				B9D72C4C2CEB7B3800C3853D /* README.md in Resources */,
+				B96CF0842CEB761900C7166A /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C0772CEB6D0D00364B69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C0812CEB6D0D00364B69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C08D2CEB6D0D00364B69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9E4C0592CEB6D0B00364B69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C0752CEB6D0D00364B69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C07F2CEB6D0D00364B69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E4C08B2CEB6D0D00364B69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9E4C07B2CEB6D0D00364B69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9E4C05C2CEB6D0B00364B69 /* ShortBlock */;
+			targetProxy = B9E4C07A2CEB6D0D00364B69 /* PBXContainerItemProxy */;
+		};
+		B9E4C0852CEB6D0D00364B69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9E4C05C2CEB6D0B00364B69 /* ShortBlock */;
+			targetProxy = B9E4C0842CEB6D0D00364B69 /* PBXContainerItemProxy */;
+		};
+		B9E4C0922CEB6D0D00364B69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9E4C08E2CEB6D0D00364B69 /* ShortBlock Extension */;
+			targetProxy = B9E4C0912CEB6D0D00364B69 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B9E4C0AB2CEB6D0D00364B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ShortBlock Extension/ShortBlock_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ShortBlock Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ShortBlock Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlock.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9E4C0AC2CEB6D0D00364B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "ShortBlock Extension/ShortBlock_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ShortBlock Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ShortBlock Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlock.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9E4C0AD2CEB6D0D00364B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					README.md,
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B9E4C0AE2CEB6D0D00364B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					README.md,
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		B9E4C0B12CEB6D0D00364B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShortBlock/ShortBlock.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					README.md,
+					".github/*",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShortBlock/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShortBlock;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9E4C0B22CEB6D0D00364B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShortBlock/ShortBlock.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					README.md,
+					".github/*",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShortBlock/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShortBlock;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9E4C0B42CEB6D0D00364B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShortBlock.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShortBlock";
+			};
+			name = Debug;
+		};
+		B9E4C0B52CEB6D0D00364B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShortBlock.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShortBlock";
+			};
+			name = Release;
+		};
+		B9E4C0B72CEB6D0D00364B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ShortBlock;
+			};
+			name = Debug;
+		};
+		B9E4C0B82CEB6D0D00364B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NRKZZ9TFF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vd.ShortBlockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ShortBlock;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B9E4C0582CEB6D0B00364B69 /* Build configuration list for PBXProject "ShortBlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E4C0AD2CEB6D0D00364B69 /* Debug */,
+				B9E4C0AE2CEB6D0D00364B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9E4C0AA2CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlock Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E4C0AB2CEB6D0D00364B69 /* Debug */,
+				B9E4C0AC2CEB6D0D00364B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9E4C0B02CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E4C0B12CEB6D0D00364B69 /* Debug */,
+				B9E4C0B22CEB6D0D00364B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9E4C0B32CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E4C0B42CEB6D0D00364B69 /* Debug */,
+				B9E4C0B52CEB6D0D00364B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9E4C0B62CEB6D0D00364B69 /* Build configuration list for PBXNativeTarget "ShortBlockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E4C0B72CEB6D0D00364B69 /* Debug */,
+				B9E4C0B82CEB6D0D00364B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = B9E4C0552CEB6D0B00364B69 /* Project object */;
+}

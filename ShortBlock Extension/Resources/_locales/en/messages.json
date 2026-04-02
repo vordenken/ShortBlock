@@ -1,0 +1,22 @@
+{
+    "extension_name": {
+        "message": "ShortBlock",
+        "description": "ShortBlock"
+    },
+    "extension_description": {
+        "message": "Blocks YouTube Shorts from appearing anywhere on YouTube.",
+        "description": "Extension description"
+    },
+    "blocking_enabled": {
+        "message": "Block Shorts",
+        "description": "Label for the main on/off toggle"
+    },
+    "status_blocking": {
+        "message": "Blocking YouTube Shorts",
+        "description": "Status text when blocking is active"
+    },
+    "status_not_blocking": {
+        "message": "Shorts are not blocked",
+        "description": "Status text when blocking is disabled"
+    }
+}
