@@ -23,6 +23,7 @@ A Safari extension that blocks YouTube Shorts — in the sidebar, the home feed,
 - Works on all YouTube domains (`youtube.com`, `m.youtube.com`, `music.youtube.com`)
 - Simple one-click on/off toggle in the popup
 - Handles YouTube's SPA navigation (single-page app)
+- Automatic updates via [Sparkle](https://sparkle-project.org/) (stable + beta channel)
 
 ## 🚀 Quick Start
 
@@ -48,7 +49,31 @@ open ShortBlock.xcodeproj
 
 Then build and run the `ShortBlock` scheme in Xcode.
 
-Alternatively, pushes to tags matching `v*` automatically trigger a GitHub Actions build and create a release.
+## 🔄 Versioning & Releases
+
+The version is managed by a single file: **`semver.txt`** (single source of truth).
+
+| Branch | Trigger | Tag format | Release type | Sparkle channel |
+|--------|---------|------------|--------------|-----------------|
+| `main` | push with new semver | `v1.2.3` | Stable | default |
+| `develop` | push with new semver | `v1.2.3-beta.N` | Pre-release | `beta` |
+
+### How it works
+
+1. Edit `semver.txt` with the new version (e.g. `1.2.0`)
+2. Push to `main` (stable) or `develop` (beta)
+3. GitHub Actions will:
+   - Stamp the version into `project.pbxproj` and `manifest.json`
+   - Build & archive the app
+   - Update `appcast.xml` with the new Sparkle entry
+   - Create a git tag (`vX.Y.Z` or `vX.Y.Z-beta.N`)
+   - Publish a GitHub Release with the `.zip` artifact
+
+Existing users receive updates automatically via [Sparkle](https://sparkle-project.org/).
+
+> **Note:** Before the first production release, generate a Sparkle EdDSA key pair
+> (`generate_keys` from the Sparkle tools) and replace the `SUPublicEDKey` placeholder
+> in `ShortBlock/Info.plist` with your public key.
 
 ## 🤝 Contributing
 

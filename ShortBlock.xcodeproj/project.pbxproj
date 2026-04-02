@@ -11,6 +11,7 @@
 		B9D72C4C2CEB7B3800C3853D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B9D72C4B2CEB7B3400C3853D /* README.md */; };
 		B9D72C4E2CEB7D1A00C3853D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B9D72C4D2CEB7D1A00C3853D /* LICENSE */; };
 		B9E4C0902CEB6D0D00364B69 /* ShortBlock Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B9E4C08F2CEB6D0D00364B69 /* ShortBlock Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B9E722042CF5F34B00951548 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B9E722032CF5F34B00951548 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9E722042CF5F34B00951548 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +192,7 @@
 			);
 			name = ShortBlock;
 			packageProductDependencies = (
+				B9E722032CF5F34B00951548 /* Sparkle */,
 			);
 			productName = ShortBlock;
 			productReference = B9E4C05D2CEB6D0B00364B69 /* ShortBlock.app */;
@@ -298,6 +301,9 @@
 			);
 			mainGroup = B9E4C0542CEB6D0B00364B69;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B9E722022CF5F34B00951548 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B9E4C05E2CEB6D0B00364B69 /* Products */;
 			projectDirPath = "";
@@ -503,6 +509,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					README.md,
+					appcast.xml,
+					semver.txt,
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -569,6 +577,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					README.md,
+					appcast.xml,
+					semver.txt,
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -601,6 +611,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					README.md,
+					appcast.xml,
+					semver.txt,
 					".github/*",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
@@ -646,6 +658,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					README.md,
+					appcast.xml,
+					semver.txt,
 					".github/*",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
@@ -796,6 +810,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9E722022CF5F34B00951548 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9E722032CF5F34B00951548 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9E722022CF5F34B00951548 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 	};
 	rootObject = B9E4C0552CEB6D0B00364B69 /* Project object */;

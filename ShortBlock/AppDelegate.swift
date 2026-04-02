@@ -10,12 +10,18 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    private let updateController = UpdateController()
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenu()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
+    }
+
+    @objc func checkForUpdates(_ sender: Any?) {
+        updateController.checkForUpdates()
     }
 
     private func setupMenu() {
@@ -27,6 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appMenuItem.submenu = appMenu
 
         appMenu.addItem(NSMenuItem(title: "About ShortBlock", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: ""))
+        appMenu.addItem(NSMenuItem.separator())
+        appMenu.addItem(NSMenuItem(title: "Check for updates...", action: #selector(checkForUpdates(_:)), keyEquivalent: ""))
         appMenu.addItem(NSMenuItem.separator())
         appMenu.addItem(NSMenuItem(title: "Quit ShortBlock", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
