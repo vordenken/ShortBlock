@@ -139,6 +139,52 @@ jobs:
           zip -r "${{ runner.temp }}/ShortBlock.zip" "ShortBlock.app"
           echo "Created ShortBlock.zip ($(du -h "${{ runner.temp }}/ShortBlock.zip" | cut -f1))"
 
+      # ── Sparkle signing ──────────────────────────────────────────────────
+      - name: Sign with Sparkle EdDSA
+        if: steps.check_tag.outputs.exists == 'false'
+        id: sparkle_sign
+        env:
+          SPARKLE_ED_PRIVATE_KEY: ${{ secrets.SPARKLE_ED_PRIVATE_KEY }}
+        run: |
+          if [ -z "$SPARKLE_ED_PRIVATE_KEY" ]; then
+            echo "⚠️ SPARKLE_ED_PRIVATE_KEY not set — skipping Sparkle signing"
+            echo "signature=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Locate sign_update inside the resolved Sparkle SPM artifact
+          SIGN_TOOL=$(find "${{ runner.temp }}" ~/Library/Developer/Xcode -name sign_update -type f 2>/dev/null | head -1)
+          if [ -z "$SIGN_TOOL" ]; then
+            # Fallback: download Sparkle release binary
+            SPARKLE_VER="2.6.4"
+            curl -sL "https://github.com/sparkle-project/Sparkle/releases/download/${SPARKLE_VER}/Sparkle-${SPARKLE_VER}.tar.xz" \
+              -o "${{ runner.temp }}/sparkle.tar.xz"
+            mkdir -p "${{ runner.temp }}/sparkle"
+            tar -xf "${{ runner.temp }}/sparkle.tar.xz" -C "${{ runner.temp }}/sparkle"
+            SIGN_TOOL=$(find "${{ runner.temp }}/sparkle" -name sign_update -type f | head -1)
+          fi
+
+          if [ -z "$SIGN_TOOL" ]; then
+            echo "::error::sign_update tool not found"
+            exit 1
+          fi
+          chmod +x "$SIGN_TOOL"
+
+          # sign_update reads the private key from the SPARKLE_ED_PRIVATE_KEY env var
+          # and outputs: sparkle:edSignature="..." length="..."
+          SIGN_OUTPUT=$("$SIGN_TOOL" "${{ runner.temp }}/ShortBlock.zip" 2>&1)
+          echo "sign_output=$SIGN_OUTPUT"
+
+          # Extract the edSignature value
+          ED_SIG=$(echo "$SIGN_OUTPUT" | grep -o 'sparkle:edSignature="[^"]*"' | head -1 | sed 's/sparkle:edSignature="//;s/"//')
+          echo "signature=$ED_SIG" >> "$GITHUB_OUTPUT"
+
+          if [ -n "$ED_SIG" ]; then
+            echo "✅ Sparkle EdDSA signature: ${ED_SIG:0:20}..."
+          else
+            echo "⚠️ Could not extract EdDSA signature from sign_update output"
+          fi
+
       # ── Upload artifact ───────────────────────────────────────────────────
       - name: Upload build artifact
         if: steps.check_tag.outputs.exists == 'false'
@@ -159,6 +205,7 @@ jobs:
           ZIP_SIZE=$(stat -f%z "$ZIP_PATH")
           PUB_DATE=$(date -u '+%a, %d %b %Y %H:%M:%S %z')
           DOWNLOAD_URL="https://github.com/vordenken/ShortBlock/releases/download/${TAG}/ShortBlock.zip"
+          ED_SIGNATURE="${{ steps.sparkle_sign.outputs.signature }}"
 
           # Build the new <item> block
           SPARKLE_CHANNEL=""
@@ -167,18 +214,23 @@ jobs:
                 <sparkle:channel>beta</sparkle:channel>"
           fi
 
+          ED_SIG_ATTR=""
+          if [ -n "$ED_SIGNATURE" ]; then
+            ED_SIG_ATTR="
+                    sparkle:edSignature=\"${ED_SIGNATURE}\""
+          fi
+
           NEW_ITEM="        <item>
                 <title>Version ${TAG}</title>${SPARKLE_CHANNEL}
                 <pubDate>${PUB_DATE}</pubDate>
                 <enclosure
                     url=\"${DOWNLOAD_URL}\"
-                    sparkle:version=\"${SEMVER}\"
+                    sparkle:version=\"${SEMVER}\"${ED_SIG_ATTR}
                     length=\"${ZIP_SIZE}\"
                     type=\"application/octet-stream\"/>
             </item>"
 
-          # Insert the new item right after <title>ShortBlock Updates</title> line
-          # (before the closing comment or any existing items)
+          # Insert the new item right before </channel>
           python3 - "$NEW_ITEM" <<'PYEOF'
           import sys, re
 
@@ -187,7 +239,6 @@ jobs:
           with open("appcast.xml", "r") as f:
               content = f.read()
 
-          # Insert after the <title>ShortBlock Updates</title> line (and any comment after it)
           # Find the position right before </channel>
           insert_pos = content.rfind("</channel>")
           if insert_pos == -1:

@@ -2,7 +2,6 @@
 // Hides YouTube Shorts from feed, sidebar, search results, and redirects /shorts/ pages
 
 const STORAGE_KEY = 'shortBlockEnabled';
-const REDIRECT_DELAY_MS = 50;
 const DOM_OBSERVE_DELAY_MS = 300;
 
 let blockingEnabled = true;
@@ -11,10 +10,12 @@ let blockingEnabled = true;
 // Uses :has() (supported in Safari 15.4+ / macOS 12.3+, well within our macOS 13.5+ requirement)
 const SHORTS_SELECTORS = [
     // ── Sidebar navigation ──────────────────────────────────────────────────
-    // Left guide panel "Shorts" entry
+    // Left guide panel "Shorts" entry (old + new markup)
     'ytd-guide-entry-renderer:has(a[href="/shorts"])',
+    'ytd-guide-entry-renderer:has(a[title="Shorts"])',
     // Mini guide (collapsed sidebar)
     'ytd-mini-guide-entry-renderer:has(a[href="/shorts"])',
+    'ytd-mini-guide-entry-renderer:has(a[title="Shorts"])',
 
     // ── Home feed shelves ───────────────────────────────────────────────────
     // Dedicated Shorts shelf on home page
@@ -56,10 +57,39 @@ const SHORTS_SELECTORS = [
     'ytd-shorts-lockup-view-model',
 ];
 
+// ── Injected stylesheet for instant CSS hiding ─────────────────────────────
+// Using CSS avoids the flash-of-content before JS runs and prevents media
+// from loading inside hidden elements (display:none skips resource loading).
+
+let injectedStyle = null;
+
+function buildCSSRules() {
+    return SHORTS_SELECTORS.map(s => `${s} { display: none !important; }`).join('\n');
+}
+
+function injectBlockingCSS() {
+    if (injectedStyle) return;
+    injectedStyle = document.createElement('style');
+    injectedStyle.id = 'shortblock-hide';
+    injectedStyle.textContent = buildCSSRules();
+    (document.head || document.documentElement).appendChild(injectedStyle);
+}
+
+function removeBlockingCSS() {
+    if (injectedStyle) {
+        injectedStyle.remove();
+        injectedStyle = null;
+    }
+}
+
 // ── Core blocking logic ────────────────────────────────────────────────────
 
 function hideShorts() {
     if (!blockingEnabled) return;
+    // Ensure CSS rules are present (they do the heavy lifting)
+    injectBlockingCSS();
+    // Belt-and-suspenders: also set inline styles for elements that may have
+    // already been rendered before the stylesheet was injected
     SHORTS_SELECTORS.forEach(selector => {
         try {
             document.querySelectorAll(selector).forEach(el => {
@@ -74,6 +104,7 @@ function hideShorts() {
 }
 
 function showShorts() {
+    removeBlockingCSS();
     SHORTS_SELECTORS.forEach(selector => {
         try {
             document.querySelectorAll(selector).forEach(el => {
@@ -89,6 +120,10 @@ function handleShortsPage() {
     if (!blockingEnabled) return;
     if (window.location.pathname.startsWith('/shorts/') ||
         window.location.pathname === '/shorts') {
+        // Immediately pause all media so audio does not leak while redirecting
+        document.querySelectorAll('video, audio').forEach(media => {
+            try { media.pause(); media.src = ''; media.load(); } catch (_) {}
+        });
         // Navigate to YouTube homepage instead
         window.location.replace('https://www.youtube.com/');
     }
@@ -164,6 +199,8 @@ async function init() {
     }
 
     if (blockingEnabled) {
+        // Inject CSS immediately for instant hiding (before DOM is fully built)
+        injectBlockingCSS();
         handleShortsPage();
         hideShorts();
     }
