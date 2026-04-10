@@ -1,0 +1,46 @@
+name: Sync main → develop
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Create sync PR (main → develop)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Check if develop has all of main's commits already
+          if git merge-base --is-ancestor origin/main origin/develop; then
+            echo "develop is already up to date with main — nothing to sync."
+            exit 0
+          fi
+
+          # Check for an existing open sync PR
+          EXISTING=$(gh pr list --base develop --head main --state open --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            echo "Sync PR #$EXISTING already exists — nothing to do."
+            exit 0
+          fi
+
+          gh pr create \
+            --base develop \
+            --head main \
+            --title "chore: sync main → develop" \
+            --body "Automated PR to keep \`develop\` in sync with \`main\`.
+
+          Created by the **Sync main → develop** workflow because new commits were pushed to \`main\` that are not yet in \`develop\`.
+
+          Please review and merge to keep the branches aligned."
