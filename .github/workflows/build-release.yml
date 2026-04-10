@@ -215,8 +215,9 @@ jobs:
           DOWNLOAD_URL="https://github.com/vordenken/ShortBlock/releases/download/${TAG}/ShortBlock.dmg"
           PUB_DATE=$(date -u '+%a, %d %b %Y %H:%M:%S %z')
 
-          # ── Build <item> block ──
-          read -r -d '' NEW_ITEM <<EOF || true
+          # ── Build <item> block and insert into appcast ──
+          ITEM_FILE="$RUNNER_TEMP/appcast_item.xml"
+          cat > "$ITEM_FILE" <<ITEM_EOF
           <item>
               <title>Version ${VERSION}</title>${CHANNEL_EL}
               <pubDate>${PUB_DATE}</pubDate>
@@ -226,14 +227,10 @@ jobs:
                   length="${FILE_LENGTH}"
                   type="application/octet-stream"/>
           </item>
-          EOF
+          ITEM_EOF
 
-          # Insert after <title>ShortBlock Updates</title>
-          awk -v item="$NEW_ITEM" \
-            '/<title>ShortBlock Updates<\/title>/{print; print item; next} {print}' \
-            appcast.xml > "$RUNNER_TEMP/appcast_new.xml"
-
-          mv "$RUNNER_TEMP/appcast_new.xml" appcast.xml
+          # Insert the item block after <title>ShortBlock Updates</title>
+          sed -i '' "/<title>ShortBlock Updates<\/title>/r ${ITEM_FILE}" appcast.xml
           echo "appcast.xml updated — $CHANNEL $VERSION"
 
       - name: Upload build artifact
