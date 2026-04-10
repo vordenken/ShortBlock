@@ -8,16 +8,26 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   build-and-release:
     runs-on: macos-15
 
     steps:
+      - name: Generate GitHub App token
+        id: app-token
+        if: vars.APP_ID != ''
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token || github.token }}
 
       - name: Read version from semver.txt
         id: version
@@ -48,7 +58,7 @@ jobs:
         id: check_tag
         run: |
           if git rev-parse "refs/tags/${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
-            echo "::warning::Tag ${{ steps.version.outputs.tag }} already exists — skipping release."
+            echo "::warning::Tag ${{ steps.version.outputs.tag }} already exists — release will be updated."
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
@@ -152,7 +162,6 @@ jobs:
 
       # ── Sparkle ────────────────────────────────────────────────
       - name: Sign DMG and prepare Sparkle appcast
-        if: steps.check_tag.outputs.exists == 'false'
         env:
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
@@ -241,7 +250,6 @@ jobs:
 
       # ── Release ────────────────────────────────────────────────
       - name: Create tag and GitHub Release
-        if: steps.check_tag.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
@@ -249,6 +257,7 @@ jobs:
           files: ${{ runner.temp }}/ShortBlock.dmg
           prerelease: ${{ steps.version.outputs.prerelease == 'true' }}
           generate_release_notes: true
+          token: ${{ steps.app-token.outputs.token || github.token }}
           body: |
             ## Important Note
 
@@ -274,12 +283,14 @@ jobs:
             10. Allow the requested permissions when prompted
 
       - name: Push appcast to working branch and main
-        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           WORKING_BRANCH="${{ github.ref_name }}"
+          TAG="${{ steps.version.outputs.tag }}"
 
           # Save updated appcast
           cp appcast.xml "$RUNNER_TEMP/appcast.xml"
@@ -292,10 +303,33 @@ jobs:
             git add appcast.xml
             if git diff --cached --quiet; then
               echo "appcast.xml unchanged on $branch — nothing to push"
-            else
-              git commit -m "chore: update appcast for ${{ steps.version.outputs.tag }}"
-              git push origin "$branch"
+              return 0
             fi
+            git commit -m "chore: update appcast for ${TAG}"
+
+            set +e
+            PUSH_ERR=$(git push origin "$branch" 2>&1)
+            PUSH_RC=$?
+            set -e
+
+            if [ $PUSH_RC -eq 0 ]; then
+              echo "✅ appcast.xml pushed to $branch"
+              return 0
+            fi
+
+            echo "::warning::Direct push to $branch failed — $PUSH_ERR"
+            echo "Creating pull request instead…"
+
+            PR_BRANCH="chore/appcast-${TAG}-${branch}"
+            git checkout -B "$PR_BRANCH"
+            git push -f origin "$PR_BRANCH"
+            gh pr create \
+              --base "$branch" \
+              --head "$PR_BRANCH" \
+              --title "chore: update appcast for ${TAG}" \
+              --body "Automated appcast update from CI. Direct push to \`$branch\` was blocked by branch protection. Please merge to complete the release." \
+              || echo "::warning::PR may already exist for this appcast update."
+            echo "✅ Appcast PR created for $branch"
           }
 
           # Always push to the triggering branch first
