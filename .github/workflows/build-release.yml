@@ -162,22 +162,46 @@ jobs:
           DMG_PATH="$RUNNER_TEMP/ShortBlock.dmg"
 
           FILE_LENGTH=$(stat -f%z "$DMG_PATH")
+          echo "DMG size: $FILE_LENGTH bytes"
 
           # ── Sparkle EdDSA signature (optional) ──
           SIG_ATTR=""
           if [ -n "$SPARKLE_PRIVATE_KEY" ]; then
-            curl -sL "https://github.com/sparkle-project/Sparkle/releases/download/2.9.1/Sparkle-2.9.1.tar.xz" \
+            echo "Downloading Sparkle tools…"
+            curl -fSL "https://github.com/sparkle-project/Sparkle/releases/download/2.9.1/Sparkle-2.9.1.tar.xz" \
               -o "$RUNNER_TEMP/sparkle.tar.xz"
             mkdir -p "$RUNNER_TEMP/sparkle"
             tar -xJf "$RUNNER_TEMP/sparkle.tar.xz" -C "$RUNNER_TEMP/sparkle"
 
-            echo -n "$SPARKLE_PRIVATE_KEY" > "$RUNNER_TEMP/sparkle_key"
-            SIGN_OUTPUT=$("$RUNNER_TEMP/sparkle/bin/sign_update" "$DMG_PATH" -f "$RUNNER_TEMP/sparkle_key")
-            SIGNATURE=$(echo "$SIGN_OUTPUT" | grep -oE 'sparkle:edSignature="[^"]+"' | cut -d'"' -f2)
-            rm -f "$RUNNER_TEMP/sparkle_key"
+            SIGN_TOOL="$RUNNER_TEMP/sparkle/bin/sign_update"
+            if [ ! -x "$SIGN_TOOL" ]; then
+              echo "::error::sign_update not found or not executable at $SIGN_TOOL"
+              exit 1
+            fi
 
-            SIG_ATTR=$'\n'"                sparkle:edSignature=\"${SIGNATURE}\""
-            echo "Sparkle EdDSA signature generated"
+            # Pipe the key via stdin to avoid writing it to a temp file.
+            # sign_update reads from stdin when --ed-key-file is set to "-".
+            echo "Signing DMG with Sparkle EdDSA…"
+            set +e
+            SIGN_OUTPUT=$(echo "$SPARKLE_PRIVATE_KEY" | "$SIGN_TOOL" "$DMG_PATH" --ed-key-file -)
+            SIGN_RC=$?
+            set -e
+
+            if [ $SIGN_RC -ne 0 ]; then
+              echo "::warning::sign_update exited with code $SIGN_RC — output was:"
+              echo "$SIGN_OUTPUT"
+              echo "Continuing without Sparkle signature."
+            else
+              SIGNATURE=$(echo "$SIGN_OUTPUT" | grep -oE 'sparkle:edSignature="[^"]+"' | cut -d'"' -f2)
+              if [ -n "$SIGNATURE" ]; then
+                SIG_ATTR=$'\n'"                sparkle:edSignature=\"${SIGNATURE}\""
+                echo "✅ Sparkle EdDSA signature generated"
+              else
+                echo "::warning::sign_update succeeded but no edSignature found in output:"
+                echo "$SIGN_OUTPUT"
+                echo "Continuing without Sparkle signature."
+              fi
+            fi
           else
             echo "::warning::SPARKLE_PRIVATE_KEY not set — appcast entry will have no signature."
           fi
