@@ -146,3 +146,5 @@ If you find ShortBlock helpful, consider supporting its development:
 
 ---
 Created by vordenken
+
+> This project was developed with the assistance of AI.

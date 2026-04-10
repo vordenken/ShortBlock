@@ -2,6 +2,17 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>ShortBlock Updates</title>
+<item>
+    <title>Version 1.0.0</title>
+            <sparkle:channel>beta</sparkle:channel>
+    <pubDate>Fri, 10 Apr 2026 09:11:20 +0000</pubDate>
+    <enclosure
+        url="https://github.com/vordenken/ShortBlock/releases/download/v1.0.0-beta/ShortBlock.dmg"
+        sparkle:version="1.0.0"
+                sparkle:edSignature="BaAodwt9o9AfaqTHKCiPNwzMFJYJ2liAr3AllFF36i4sYD/W61MKvAW5gZ8utorPqFyiHpS2hfDlZ7mqJ/hRAA=="
+        length="1101205"
+        type="application/octet-stream"/>
+</item>
         <!-- Entries are added automatically by CI -->
     </channel>
 </rss>
