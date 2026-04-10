@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- S letter representing ShortBlock/Shorts block -->
+  <rect x="2" y="2" width="12" height="12" rx="3" fill="#FF3B30"/>
+  <path d="M5 5.5 C5 4.1 6.1 3 7.5 3 L8.5 3 C9.9 3 11 4.1 11 5.5 C11 6.9 9.9 8 8.5 8 L7.5 8 C6.1 8 5 9.1 5 10.5 C5 11.9 6.1 13 7.5 13 L8.5 13 C9.9 13 11 11.9 11 10.5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>

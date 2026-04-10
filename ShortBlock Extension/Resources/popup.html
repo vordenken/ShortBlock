@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <img src="images/icon-128.png" class="app-icon" alt="ShortBlock">
+        <div class="header-info">
+            <div class="app-name">ShortBlock</div>
+            <div class="version" id="version"></div>
+        </div>
+        <label class="toggle-switch" aria-label="Block Shorts">
+            <input type="checkbox" id="enabledToggle" checked>
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
+
+    <hr>
+
+    <div class="status" id="statusText">Blocking YouTube Shorts</div>
+
+    <hr>
+
+    <div class="links">
+        <a href="https://github.com/vordenken/ShortBlock" target="_blank" class="link-container" title="View Source on GitHub">
+            <img src="images/icons8-github-64.png" class="link-icon github-icon" alt="GitHub">
+            <span class="link-label">Source</span>
+        </a>
+
+        <a href="https://ko-fi.com/vordenken" target="_blank" class="link-container" title="Support on Ko-fi">
+            <img src="images/icons8-kofi-64.png" class="link-icon" alt="Ko-fi">
+            <span class="link-label">Ko-fi</span>
+        </a>
+
+        <a href="https://www.buymeacoffee.com/vordenken" target="_blank" class="link-container" title="Buy Me a Coffee">
+            <img src="images/icons8-bmc-64.png" class="link-icon" alt="Buy Me a Coffee">
+            <span class="link-label">Coffee</span>
+        </a>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
