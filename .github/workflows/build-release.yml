@@ -273,29 +273,38 @@ jobs:
             9. Follow the instructions
             10. Allow the requested permissions when prompted
 
-      - name: Push appcast to main
+      - name: Push appcast to working branch and main
         if: steps.check_tag.outputs.exists == 'false'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          WORKING_BRANCH="${{ github.ref_name }}"
+
           # Save updated appcast
           cp appcast.xml "$RUNNER_TEMP/appcast.xml"
-
-          # Reset local changes and switch to main if needed
           git checkout -- .
-          if [ "${{ github.ref_name }}" != "main" ]; then
-            git fetch origin main
-            git checkout main
-          fi
 
-          cp "$RUNNER_TEMP/appcast.xml" appcast.xml
-          git add appcast.xml
-          if git diff --cached --quiet; then
-            echo "appcast.xml unchanged — nothing to push"
-          else
-            git commit -m "chore: update appcast for ${{ steps.version.outputs.tag }}"
-            git push origin main
+          push_appcast() {
+            local branch="$1"
+            git checkout "$branch"
+            cp "$RUNNER_TEMP/appcast.xml" appcast.xml
+            git add appcast.xml
+            if git diff --cached --quiet; then
+              echo "appcast.xml unchanged on $branch — nothing to push"
+            else
+              git commit -m "chore: update appcast for ${{ steps.version.outputs.tag }}"
+              git push origin "$branch"
+            fi
+          }
+
+          # Always push to the triggering branch first
+          push_appcast "$WORKING_BRANCH"
+
+          # Also push to main if the triggering branch is not main
+          if [ "$WORKING_BRANCH" != "main" ]; then
+            git fetch origin main
+            push_appcast "main"
           fi
 
       # ── Cleanup ────────────────────────────────────────────────
