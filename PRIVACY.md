@@ -24,4 +24,4 @@ ShortBlock is designed with privacy in mind and does not collect, store, or tran
 
 For questions about privacy, please open an issue on GitHub.
 
-Last updated: April 2025
+Last updated: April 2026
