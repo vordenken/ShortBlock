@@ -173,6 +173,7 @@ jobs:
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
           VERSION="${{ steps.version.outputs.version }}"
+          BUILD="${{ github.run_number }}"
           TAG="${{ steps.version.outputs.tag }}"
           CHANNEL="${{ steps.version.outputs.channel }}"
           DMG_PATH="$RUNNER_TEMP/ShortBlock.dmg"
@@ -239,7 +240,8 @@ jobs:
               <pubDate>${PUB_DATE}</pubDate>
               <enclosure
                   url="${DOWNLOAD_URL}"
-                  sparkle:version="${VERSION}"${SIG_ATTR}
+                  sparkle:version="${BUILD}"
+                  sparkle:shortVersionString="${VERSION}"${SIG_ATTR}
                   length="${FILE_LENGTH}"
                   type="application/octet-stream"/>
           </item>
@@ -252,7 +254,7 @@ jobs:
               buf = buf ORS $0
               if (/<\/item>/) {
                 inside = 0
-                if (buf !~ "sparkle:version=\"" ver "\"") print buf
+                if (buf !~ "sparkle:shortVersionString=\"" ver "\"") print buf
                 buf = ""
               }
               next
