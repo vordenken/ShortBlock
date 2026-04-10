@@ -57,8 +57,15 @@ jobs:
       - name: Check for existing tag
         id: check_tag
         run: |
-          if git rev-parse "refs/tags/${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
-            echo "::warning::Tag ${{ steps.version.outputs.tag }} already exists — release will be updated."
+          TAG="${{ steps.version.outputs.tag }}"
+          CHANNEL="${{ steps.version.outputs.channel }}"
+
+          if git rev-parse "refs/tags/${TAG}" >/dev/null 2>&1; then
+            if [ "$CHANNEL" = "stable" ]; then
+              echo "::error::Stable release ${TAG} already exists — bump the version in semver.txt to create a new release."
+              exit 1
+            fi
+            echo "::warning::Beta tag ${TAG} already exists — release will be overwritten."
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
@@ -237,6 +244,22 @@ jobs:
                   type="application/octet-stream"/>
           </item>
           ITEM_EOF
+
+          # Remove any existing appcast entry for the same version (prevents duplicates on beta re-releases)
+          awk -v ver="$VERSION" '
+            /<item>/ { buf = $0; inside = 1; next }
+            inside {
+              buf = buf ORS $0
+              if (/<\/item>/) {
+                inside = 0
+                if (buf !~ "sparkle:version=\"" ver "\"") print buf
+                buf = ""
+              }
+              next
+            }
+            { print }
+          ' appcast.xml > "$RUNNER_TEMP/appcast_deduped.xml"
+          mv "$RUNNER_TEMP/appcast_deduped.xml" appcast.xml
 
           # Insert the item block after <title>ShortBlock Updates</title>
           sed -i '' "/<title>ShortBlock Updates<\/title>/r ${ITEM_FILE}" appcast.xml
