@@ -249,6 +249,29 @@ jobs:
           files: ${{ runner.temp }}/ShortBlock.dmg
           prerelease: ${{ steps.version.outputs.prerelease == 'true' }}
           generate_release_notes: true
+          body: |
+            ## Important Note
+
+            This extension is currently not notarized by Apple. You'll need to bypass macOS security settings to initially install it. Updating works through Sparkle and doesn't need these steps again!
+
+            ### Installation Steps
+
+            1. Download `ShortBlock.dmg` file from the releases page and open it
+            2. When trying to open `ShortBlock.dmg`, macOS will show a security warning
+            3. To bypass this:
+                - Open System Settings
+                - Go to Privacy & Security
+                - Scroll down and click "Open Anyway"
+            4. Open `ShortBlock.dmg` again
+            5. Copy the `.app` to your Applications folder
+            6. When trying to open the app, macOS will show a security warning
+            7. To bypass this:
+                - Open System Settings
+                - Go to Privacy & Security
+                - Scroll down and click "Open Anyway"
+            8. Open `ShortBlock.app` again
+            9. Follow the instructions
+            10. Allow the requested permissions when prompted
 
       - name: Push appcast to main
         if: steps.check_tag.outputs.exists == 'false'

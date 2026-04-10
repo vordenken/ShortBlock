@@ -32,6 +32,34 @@ A Safari extension that blocks YouTube Shorts — in the sidebar, the home feed,
 3. Open the app — it will guide you to enable the Safari extension
 4. Enable **ShortBlock** in Safari → Settings → Extensions
 
+> **Updating:** To receive updates, open the ShortBlock app from time to time. Sparkle checks for updates automatically (once per day).
+
+### ⚠️ Important Note
+
+This extension is currently not notarized by Apple. You'll need to bypass macOS security settings to initially install it. Updating works through Sparkle and doesn't need these steps again!
+
+<details>
+<summary><strong>Installation Steps (click to expand)</strong></summary>
+
+1. Download `ShortBlock.dmg` from the releases page and open it
+2. When trying to open `ShortBlock.dmg`, macOS will show a security warning
+3. To bypass this:
+    - Open **System Settings**
+    - Go to **Privacy & Security**
+    - Scroll down and click **"Open Anyway"**
+4. Open `ShortBlock.dmg` again
+5. Copy the `.app` to your Applications folder
+6. When trying to open the app, macOS will show a security warning
+7. To bypass this:
+    - Open **System Settings**
+    - Go to **Privacy & Security**
+    - Scroll down and click **"Open Anyway"**
+8. Open `ShortBlock.app` again
+9. Follow the instructions
+10. Allow the requested permissions when prompted
+
+</details>
+
 ## 💻 Requirements
 
 - macOS 13.5 or later
