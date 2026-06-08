@@ -22,6 +22,8 @@ const SHORTS_SELECTORS = [
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
     // Reels shelf
     'ytd-reel-shelf-renderer',
+    // Legacy Shorts shelf
+    'ytd-reel-shelf-renderer-old',
     // Generic Shorts renderer
     'ytd-shorts',
 
@@ -36,6 +38,12 @@ const SHORTS_SELECTORS = [
     'ytd-video-renderer:has(a[href*="/shorts/"])',
     // Horizontal shelf of shorts in search
     'ytd-shelf-renderer:has(ytd-reel-item-renderer)',
+    // Search results with inline playback videos (shorts)
+    'ytd-inline-playback-video-renderer:has(a[href*="/shorts/"])',
+    // Generic inline video renderer for shorts
+    'ytd-inline-playback-video-renderer:has([aria-label*="Short"])',
+    // Dynamic shelf with shorts content
+    'ytd-expansion-shelf-renderer:has(ytd-reel-item-renderer)',
 
     // ── Up-next / recommended sidebar ──────────────────────────────────────
     // Compact video card linking to /shorts/
@@ -188,7 +196,7 @@ browser.runtime.onMessage.addListener((message) => {
     }
 });
 
-// ── Initialisation ─────────────────────────────────────────────────────────
+// ── Initialisation ────────────────────────────────────────────────────────
 
 async function init() {
     try {
